@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+.search-header {
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+.search-header-span {
+  margin-left: 0.5rem;
+}
+.search-content {
+  padding: 24px;
+  min-height: 360px;
+  background: white;
+  margin: 1rem 0;
+}
