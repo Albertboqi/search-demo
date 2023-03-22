@@ -1,7 +1,13 @@
-import { LeftOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { Input, Layout, Menu, Radio } from "antd";
+import {
+  LeftOutlined,
+  MenuFoldOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
+import { Button, Form, Input, Layout, Menu, Radio, Space } from "antd";
 import { useState } from "react";
 import "./App.css";
+import InfoRemark from "./infoRemark";
+import { logicData } from "./logicData";
 const { Header, Content, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -58,9 +64,33 @@ const App = () => {
         >
           <div className="search-content">
             <div>查询注解分析</div>
-            <div style={{ margin: "3rem 0", background: "#f3f3f3" }}>
-              <Input />
+            <div
+              style={{
+                textAlign: "center",
+                padding: "2rem 5rem",
+                width: "50%",
+              }}
+            >
+              <Form
+                labelCol={{
+                  span: 8,
+                }}
+                wrapperCol={{
+                  span: 16,
+                }}
+              >
+                <Form.Item label="查询语句id">
+                  <Input />
+                </Form.Item>
+                <Form.Item label="planid">
+                  <Input />
+                </Form.Item>
+                <Button icon={<SearchOutlined />} type="primary">
+                  查询
+                </Button>
+              </Form>
             </div>
+
             <div>
               <Radio.Group
                 onChange={handleModeChange}
@@ -73,7 +103,11 @@ const App = () => {
                 <Radio.Button value="exec">信息标注</Radio.Button>
               </Radio.Group>
               <div>
-                <Input.TextArea rows={10} />
+                {mode === "logic" ? (
+                  <Input.TextArea rows={15} value={logicData} />
+                ) : (
+                  <InfoRemark />
+                )}
               </div>
             </div>
           </div>
